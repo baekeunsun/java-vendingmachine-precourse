@@ -1,15 +1,16 @@
 package vendingmachine.view;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class OutputView {
+    static List<Integer> Coins = Arrays.asList(500,100,50,10);
 
     public static void printVendingmachineAmount(List<Integer> vendingmachineCoins) {
         System.out.println("자판기가 보유한 동전");
-        System.out.printf("500원 - %d개 %n", vendingmachineCoins.get(0));
-        System.out.printf("100원 - %d개 %n", vendingmachineCoins.get(1));
-        System.out.printf("50원 - %d개 %n", vendingmachineCoins.get(2));
-        System.out.printf("10원 - %d개 %n", vendingmachineCoins.get(3));
+        for (int i = 0; i < 4; i++) {
+            System.out.printf("%d원 - %d개 %n", Coins.get(i),vendingmachineCoins.get(i));
+        }
     }
 
     public static void printInputAmount(int inputAmount) {
@@ -18,9 +19,14 @@ public class OutputView {
 
     public static void printChange(List<Integer> change) {
         System.out.println("잔돈");
-        System.out.printf("500원 - %d개 %n", change.get(0));
-        System.out.printf("100원 - %d개 %n", change.get(1));
-        System.out.printf("50원 - %d개 %n", change.get(2));
-        System.out.printf("10원 - %d개 %n", change.get(3));
+        for (int i = 0; i < 4; i++) {
+            if (change.get(i) > 0) {
+                System.out.printf("%d원 - %d개 %n", Coins.get(i),change.get(i));
+            }
+        }
+    }
+
+    public static void printError(String message) {
+        System.out.println("[ERROR]" + message);
     }
 }

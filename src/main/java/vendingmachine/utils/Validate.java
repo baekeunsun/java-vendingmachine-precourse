@@ -1,16 +1,20 @@
 package vendingmachine.utils;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static jdk.nashorn.internal.runtime.JSType.isNumber;
 
 public class Validate {
 
     public int validateVendingmachineAmount() {
         int input = Integer.valueOf(readLine());
+        if (!isNumber(input)) {
+            throw new IllegalArgumentException(ErrorMessage.INPUT_TYPE_INT.getMessage());
+        }
         if (input < 100) {
-            throw new IllegalArgumentException("자판기는 100원 이상 보유하고 있어야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INPUT_MIN_100.getMessage());
         }
         if (input %10 != 0) {
-            throw new IllegalArgumentException("자판기는 10원 단위의 돈을 보유하고 있어야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INPUT_DIVIDE_10.getMessage());
         }
         return input;
     }
