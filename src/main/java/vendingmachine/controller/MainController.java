@@ -18,6 +18,7 @@ public class MainController {
         for (String product : InputView.getProduct()) {
             products.add(new Product(product));
         }
+        int inputAmount = InputView.getInputAmount();
 
 
     }
