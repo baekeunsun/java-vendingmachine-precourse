@@ -3,9 +3,9 @@ package vendingmachine.domain;
 import java.util.List;
 
 public class Product {
-    String name;
-    int price;
-    int count;
+    public String name;
+    public int price;
+    public int count;
 
     public Product(String input) {
         String[] inputs = input.split(",");
