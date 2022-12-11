@@ -15,4 +15,12 @@ public class OutputView {
     public static void printInputAmount(int inputAmount) {
         System.out.printf("투입 금액: %d원 %n", inputAmount);
     }
+
+    public static void printChange(List<Integer> change) {
+        System.out.println("잔돈");
+        System.out.printf("500원 - %d개 %n", change.get(0));
+        System.out.printf("100원 - %d개 %n", change.get(1));
+        System.out.printf("50원 - %d개 %n", change.get(2));
+        System.out.printf("10원 - %d개 %n", change.get(3));
+    }
 }

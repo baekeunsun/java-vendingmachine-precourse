@@ -6,16 +6,15 @@ import vendingmachine.service.CoinSetting;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class MainController {
     public MainController() {
         int vendingmachineAmount = InputView.getVendingmachineAmount();
-        OutputView.printVendingmachineAmount(new CoinSetting(vendingmachineAmount).vendingmachineCoins);
+        CoinSetting vendingmachine = new CoinSetting(vendingmachineAmount);
+        OutputView.printVendingmachineAmount(vendingmachine.vendingmachineCoins);
+
         Map<String,Product> products = new HashMap<>();
         for (String product : InputView.getProduct()) {
             Product tmpProduct = new Product(product);
@@ -46,7 +45,18 @@ public class MainController {
                 inputAmount -= nowPurchaseProduct.price;
             }
         }
+        List<Integer> change = Arrays.asList(0,0,0,0);
 
 
+        List<Integer> Coins = Arrays.asList(500,100,50,10);
+        for (int c = 0; c <4; c++) {
+            while ((inputAmount >= Coins.get(c)) && (vendingmachine.vendingmachineCoins.get(c) > 0)) {
+                inputAmount -= Coins.get(c);
+                vendingmachine.vendingmachineCoins.set(c,vendingmachine.vendingmachineCoins.get(c)-1);
+                change.set(c,change.get(c)+1);
+            }
+        }
+
+        OutputView.printChange(change);
     }
 }
