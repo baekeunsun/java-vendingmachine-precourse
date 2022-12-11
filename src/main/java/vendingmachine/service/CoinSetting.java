@@ -1,7 +1,5 @@
 package vendingmachine.service;
 
-import vendingmachine.repository.VendingmachineCoins;
-
 import java.util.Arrays;
 import java.util.List;
 
