@@ -20,6 +20,13 @@ public class MainController {
         }
         int inputAmount = InputView.getInputAmount();
 
+        while (true) {
+            OutputView.printInputAmount(inputAmount);
+            String nowPurchaseProduct = InputView.getPurchaseProduct();
+
+
+        }
+
 
     }
 }

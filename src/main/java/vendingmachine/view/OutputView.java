@@ -11,4 +11,8 @@ public class OutputView {
         System.out.printf("50원 - %d개 %n", vendingmachineCoins.get(2));
         System.out.printf("10원 - %d개 %n", vendingmachineCoins.get(3));
     }
+
+    public static void printInputAmount(int inputAmount) {
+        System.out.printf("투입 금액: %d원 %n", inputAmount);
+    }
 }
