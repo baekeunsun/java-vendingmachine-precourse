@@ -17,13 +17,12 @@ public class InputView {
 
     public static List<String> getProduct() {
         System.out.println("상품명과 가격, 수량을 입력해 주세요.");
-        List<String> input = Arrays.asList(readLine().split(";"));
-        return input;
+        return validate.validateProduct();
     }
 
     public static int getInputAmount() {
         System.out.println("투입 금액을 입력해 주세요.");
-        return Integer.valueOf(readLine());
+        return validate.validateInputAmount();
     }
 
     public static String getPurchaseProduct() {

@@ -1,7 +1,5 @@
 package vendingmachine.domain;
 
-import java.util.List;
-
 public class Product {
     public String name;
     public int price;

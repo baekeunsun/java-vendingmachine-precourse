@@ -1,8 +1,8 @@
 package vendingmachine.controller;
 
-
 import vendingmachine.domain.Product;
 import vendingmachine.service.CoinSetting;
+import vendingmachine.utils.ErrorMessage;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
 
@@ -16,12 +16,13 @@ public class MainController {
     static CoinSetting vendingmachine;
 
     public MainController() {
-        coinSetting();
-        productSetting();
-        inputAmountSetting();
+        run();
     }
 
     public static void run() {
+        coinSetting();
+        productSetting();
+        inputAmountSetting();
         purchaseProduct();
         makeChange();
     }
@@ -56,10 +57,14 @@ public class MainController {
     }
 
     private static void purchase() {
-        Product nowPurchaseProduct =  products.get(InputView.getPurchaseProduct());
-        if (nowPurchaseProduct.price <= inputAmount) {
-            nowPurchaseProduct.count -= 1;
-            inputAmount -= nowPurchaseProduct.price;
+        try {
+            Product nowPurchaseProduct =  products.get(InputView.getPurchaseProduct());
+            if (nowPurchaseProduct.price <= inputAmount) {
+                nowPurchaseProduct.count -= 1;
+                inputAmount -= nowPurchaseProduct.price;
+            }
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException(ErrorMessage.NO_PRODUCT.getMessage());
         }
     }
 
